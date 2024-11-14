@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "C tipo pagamentos" %>
+
+<h1>C tipo pagamentos</h1>
+
+<div id="c_tipos_pagamentos">
+  <% @c_tipos_pagamentos.each do |c_tipo_pagamento| %>
+    <%= render c_tipo_pagamento %>
+    <p>
+      <%= link_to "Show this c tipo pagamento", c_tipo_pagamento %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New c tipo pagamento", new_c_tipo_pagamento_path %>

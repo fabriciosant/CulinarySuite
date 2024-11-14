@@ -1,0 +1,2 @@
+class CTipoPagamento < ApplicationRecord
+end
