@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "C pagamentos" %>
+
+<h1>C pagamentos</h1>
+
+<div id="c_pagamentos">
+  <% @c_pagamentos.each do |c_pagamento| %>
+    <%= render c_pagamento %>
+    <p>
+      <%= link_to "Show this c pagamento", c_pagamento %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New c pagamento", new_c_pagamento_path %>
