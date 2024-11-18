@@ -1,0 +1,2 @@
+class GCidade < ApplicationRecord
+end
