@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "G estados" %>
+
+<h1>G estados</h1>
+
+<div id="g_estados">
+  <% @g_estados.each do |g_estado| %>
+    <%= render g_estado %>
+    <p>
+      <%= link_to "Show this g estado", g_estado %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New g estado", new_g_estado_path %>
