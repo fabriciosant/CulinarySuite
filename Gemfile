@@ -68,6 +68,6 @@ gem "devise", "~> 4.9"
 
 gem "pagy"
 
-gem 'ransack'
+gem "ransack"
 
 gem "simple_form"
