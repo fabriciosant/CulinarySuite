@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :c_status_pedidos
   resources :c_pagamentos
   resources :c_tipos_pagamentos
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

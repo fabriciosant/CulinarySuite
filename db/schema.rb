@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_14_170005) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_18_121320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -56,6 +56,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_14_170005) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["c_tipo_pagamento_id"], name: "index_c_pagmentos_on_c_tipo_pagamento_id"
+  end
+
+  create_table "c_status_pedidos", force: :cascade do |t|
+    t.integer "tipo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "c_tipos_pagamentos", force: :cascade do |t|
