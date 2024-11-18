@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_18_122505) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_18_125933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -67,6 +67,18 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_122505) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "c_produtos_promocoes", force: :cascade do |t|
+    t.string "nome"
+    t.string "descricao"
+    t.decimal "preco"
+    t.boolean "status"
+    t.datetime "data_promocao"
+    t.bigint "c_produto_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["c_produto_id"], name: "index_c_produtos_promocoes_on_c_produto_id"
+  end
+
   create_table "c_status_pedidos", force: :cascade do |t|
     t.integer "tipo"
     t.datetime "created_at", null: false
@@ -83,4 +95,5 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_122505) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "c_pagamentos", "c_tipos_pagamentos"
   add_foreign_key "c_pagmentos", "c_tipos_pagamentos"
+  add_foreign_key "c_produtos_promocoes", "c_produtos"
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :c_produtos_promocoes
   resources :c_produtos
   resources :c_status_pedidos
   resources :c_pagamentos

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "C produto promocaos" %>
+
+<h1>C produto promocaos</h1>
+
+<div id="c_produtos_promocoes">
+  <% @c_produtos_promocoes.each do |c_produto_promocao| %>
+    <%= render c_produto_promocao %>
+    <p>
+      <%= link_to "Show this c produto promocao", c_produto_promocao %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New c produto promocao", new_c_produto_promocao_path %>
