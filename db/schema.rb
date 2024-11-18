@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_18_131805) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_18_134546) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -91,6 +91,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_131805) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "c_usuarios", force: :cascade do |t|
+    t.integer "cpf"
+    t.string "nome"
+    t.integer "telefone"
+    t.bigint "g_endereco_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["g_endereco_id"], name: "index_c_usuarios_on_g_endereco_id"
+  end
+
   create_table "g_cidades", force: :cascade do |t|
     t.string "nome"
     t.datetime "created_at", null: false
@@ -122,6 +132,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_131805) do
   add_foreign_key "c_pagamentos", "c_tipos_pagamentos"
   add_foreign_key "c_pagmentos", "c_tipos_pagamentos"
   add_foreign_key "c_produtos_promocoes", "c_produtos"
+  add_foreign_key "c_usuarios", "g_enderecos"
   add_foreign_key "g_enderecos", "g_estados"
   add_foreign_key "g_estados", "g_cidades"
 end
