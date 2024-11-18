@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @g_endereco %>
+
+<div>
+  <%= link_to "Edit this g endereco", edit_g_endereco_path(@g_endereco) %> |
+  <%= link_to "Back to g enderecos", g_enderecos_path %>
+
+  <%= button_to "Destroy this g endereco", @g_endereco, method: :delete %>
+</div>

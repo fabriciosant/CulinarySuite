@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :g_enderecos
   resources :g_estados
   resources :g_cidades
   resources :c_produtos_promocoes

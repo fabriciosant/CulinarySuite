@@ -6,5 +6,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular "c_produto_promocao", "c_produtos_promocoes"
   inflect.irregular "g_cidade", "g_cidades"
   inflect.irregular "g_estado", "g_estados"
+  inflect.irregular "g_endereco", "g_enderecos"
    inflect.acronym "RESTful"
 end
