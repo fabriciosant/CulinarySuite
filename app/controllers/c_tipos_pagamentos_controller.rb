@@ -25,8 +25,8 @@ class CTiposPagamentosController < ApplicationController
 
     respond_to do |format|
       if @c_tipo_pagamento.save
-        format.html { redirect_to @c_tipo_pagamento, notice: "C tipo pagamento was successfully created." }
-        format.json { render :show, status: :created, location: @c_tipo_pagamento }
+        format.html { redirect_to c_tipos_pagamentos_path, notice: "C tipo pagamento foi criado com sucesso." }
+        format.json { render :index, status: :created, location: @c_tipo_pagamento }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @c_tipo_pagamento.errors, status: :unprocessable_entity }
@@ -52,8 +52,7 @@ class CTiposPagamentosController < ApplicationController
     @c_tipo_pagamento.destroy!
 
     respond_to do |format|
-      format.html { redirect_to c_tipos_pagamentos_path, status: :see_other, notice: "C tipo pagamento was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to c_tipos_pagamentos_path, notice: "tipo de pagamento was successfully destroyed." }
     end
   end
 
