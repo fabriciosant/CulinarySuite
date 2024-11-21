@@ -1,12 +1,12 @@
 <% content_for :title, "Editing c tipo pagamento" %>
-
 <h1 class="text-secondary text-center">Editar tipo de pagamento</h1>
-
-<%= render "form", c_tipo_pagamento: @c_tipo_pagamento %>
-
-<br>
-
-<div class="text-secondary text-center">
+<div class="card">
+  <div class="card-body p-5">
+    <%= render "form", c_tipo_pagamento: @c_tipo_pagamento %>
+    <br>
+  </div>
+</div>
+<div class="text-secondary text-center m-5">
   <%= link_to "Voltar", c_tipos_pagamentos_path, class:"btn btn-secondary" %>
 </div>
  
