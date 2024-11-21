@@ -65,6 +65,6 @@ class GCidadesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def g_cidade_params
-      params.expect(g_cidade: [ :nome ])
+      params.expect(g_cidade: [ :nome, :g_estado_id ])
     end
 end

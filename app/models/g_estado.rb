@@ -1,3 +1,6 @@
 class GEstado < ApplicationRecord
-  belongs_to :g_cidade
+  has_many :g_cidades
+  def to_s
+    nome
+  end
 end

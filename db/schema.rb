@@ -103,8 +103,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_134546) do
 
   create_table "g_cidades", force: :cascade do |t|
     t.string "nome"
+    t.bigint "g_estado_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["g_estado_id"], name: "index_g_cidades_on_g_estado_id"
   end
 
   create_table "g_enderecos", force: :cascade do |t|
@@ -121,10 +123,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_134546) do
 
   create_table "g_estados", force: :cascade do |t|
     t.string "nome"
-    t.bigint "g_cidade_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["g_cidade_id"], name: "index_g_estados_on_g_cidade_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -133,6 +133,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_134546) do
   add_foreign_key "c_pagmentos", "c_tipos_pagamentos"
   add_foreign_key "c_produtos_promocoes", "c_produtos"
   add_foreign_key "c_usuarios", "g_enderecos"
+  add_foreign_key "g_cidades", "g_estados"
   add_foreign_key "g_enderecos", "g_estados"
-  add_foreign_key "g_estados", "g_cidades"
 end
