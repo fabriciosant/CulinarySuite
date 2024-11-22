@@ -12,36 +12,33 @@
           <th scope="col">Ações</th>
         </tr>
       </thead>
-        <tbody id="g_estados">
-            <% @g_estados.each do |g_estado| %>
-            <tr>
-              <td><%= g_estado.nome %></td>
-              <td>
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                  <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-gear"></i>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <%= link_to "Editar", edit_g_estado_path(g_estado), class:"dropdown-item link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %> 
-                    </li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li>
-                      <%= button_to "Deletar", g_estado, method: :delete  %>
-                      <!--<button type="button" class="dropdown-item link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#deleteModal<%= g_estado.id %>">
-                        Deletar
-                      </button> -->
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
+      <tbody id="g_estados">
+        <% @g_estados.each do |g_estado| %>
+          <tr>
+            <td><%= g_estado.nome %></td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-gear"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to "Editar", edit_g_estado_path(g_estado), class: "dropdown-item link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %> 
+                  </li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <button class="dropdown-item link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
+                            onclick="confirmDelete('<%= g_estado.nome %>', '<%= g_estado_path(g_estado) %>')">
+                      Deletar
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
-  <%= link_to "Adicionar novo Estado", new_g_estado_path, class:"botao-criar" %>
+  <%= link_to "Adicionar Estado", new_g_estado_path, class: "botao-criar" %>
 </div>
-
