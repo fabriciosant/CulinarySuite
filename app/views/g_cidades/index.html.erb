@@ -1,16 +1,67 @@
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "G cidades" %>
+  <h1 class="text-secondary text-center">Cidades</h1>
+<div class="card p-5">
+  <div id="g_cidades">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Descrição</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="g_cidades_body">  
+        <% @g_cidades.each do |g_cidade| %>
+          <tr>
+            <td><%= g_cidade.nome %></td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-gear"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to "Editar", edit_g_cidade_path(g_cidade), 
+                       class: "dropdown-item link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+                  </li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <button type="button" class="dropdown-item link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#deleteModal-<%= g_cidade.id %>">
+                        Deletar
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
 
-<h1>G cidades</h1>
-
-<div id="g_cidades">
-  <% @g_cidades.each do |g_cidade| %>
-    <%= render g_cidade %>
-    <p>
-      <%= link_to "Show this g cidade", g_cidade %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New g cidade", new_g_cidade_path %>
+          <!-- Modal para Exclusão -->
+          <div class="modal fade" id="deleteModal-<%= g_cidade.id %>" tabindex="-1" aria-labelledby="deleteModalLabel-<%= g_cidade.id %>" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="deleteModalLabel-<%= g_cidade.id %>">Deletar Cidade</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Deseja realmente deletar a cidade "<%= g_cidade.nome %>"?
+                  <br>
+                  <p class="text-secondary">Esta ação não pode ser desfeita!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                  <%= button_to "Deletar", g_cidade_path(g_cidade), method: :delete, class: "btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to "Nova cidade", new_g_cidade_path, class:"botao-criar" %>
+</div>    
+ 
