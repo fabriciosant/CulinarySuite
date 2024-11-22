@@ -1,11 +1,11 @@
 <% content_for :title, "New g estado" %>
 
-<h1>New g estado</h1>
-
-<%= render "form", g_estado: @g_estado %>
-
-<br>
-
-<div>
-  <%= link_to "Back to g estados", g_estados_path %>
+<h1 class="text-center text-secondary">Novo Estado</h1>
+<div class="card">
+  <div class="card-body p-5">
+    <%= render "form", g_estado: @g_estado %>
+  </div>
+</div>
+<div class="text-secondary text-center m-5">
+  <%= link_to "Voltar", g_estados_path, class:"btn btn-secondary" %>
 </div>
