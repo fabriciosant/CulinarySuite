@@ -23,38 +23,27 @@ class GCidadesController < ApplicationController
   def create
     @g_cidade = GCidade.new(g_cidade_params)
 
-    respond_to do |format|
       if @g_cidade.save
-        format.html { redirect_to @g_cidade, notice: "G cidade was successfully created." }
-        format.json { render :show, status: :created, location: @g_cidade }
+       redirect_to g_cidades_path, notice: "'#{@g_cidade.nome}' criada com sucesso!" 
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @g_cidade.errors, status: :unprocessable_entity }
+        render :new, status: :unprocessable_entity 
       end
-    end
   end
 
-  # PATCH/PUT /g_cidades/1 or /g_cidades/1.json
+  # PATCH/PUT /g_cidades/1 or /g_cidades/1.json 
   def update
-    respond_to do |format|
       if @g_cidade.update(g_cidade_params)
-        format.html { redirect_to @g_cidade, notice: "G cidade was successfully updated." }
-        format.json { render :show, status: :ok, location: @g_cidade }
+        redirect_to g_cidades_path, notice: "'#{@g_cidade.nome}' editado com sucesso!" 
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @g_cidade.errors, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity
       end
-    end
   end
 
   # DELETE /g_cidades/1 or /g_cidades/1.json
   def destroy
     @g_cidade.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to g_cidades_path, status: :see_other, notice: "G cidade was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      redirect_to g_cidades_path, status: :see_other, notice: "'#{@g_cidade.nome}' excluida com sucesso!"
   end
 
   private
