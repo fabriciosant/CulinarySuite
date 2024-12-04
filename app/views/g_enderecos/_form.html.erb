@@ -1,18 +1,20 @@
-
 <%= simple_form_for(@g_endereco) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :cep %>
-    <%= f.input :logradouro %>
-    <%= f.input :numero %>
-    <%= f.input :bairro %>
-    <%= f.input :complemento %>
-    <%= f.association :g_estado %>
+    <%= f.input :cep, input_html: { id: "cep", maxlength: 9, placeholder: "Digite o CEP" } %>
+    <%= f.input :logradouro, input_html: { placeholder: "Digite o logradouro" } %>
+    <%= f.input :numero, input_html: { placeholder: "Digite o número" } %>
+    <%= f.input :bairro, input_html: { placeholder: "Digite o bairro" } %>
+    <%= f.input :complemento, input_html: { placeholder: "Digite o complemento (Opcional)..." } %>
+    <%= f.association :g_estado, input_html: { id: "estado" }, prompt: "Selecione o Estado" %>
+    <div id="cidade-container" style="display: none;">
+      <%= f.input :g_cidade_id, collection: [], label: "Cidade", input_html: { id: "cidade", placeholder: "Selecione a cidade" } %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "botao-criar" %>
   </div>
 <% end %>

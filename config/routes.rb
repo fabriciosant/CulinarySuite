@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :c_usuarios
   resources :g_enderecos
-  resources :g_estados
+  resources :g_estados do
+    member do
+      get :cidades
+    end
+  end
   resources :g_cidades
   resources :c_produtos_promocoes
   resources :c_produtos
@@ -19,5 +23,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "c_tipos_pagamentos#index"
+  root "g_enderecos#index"
 end
