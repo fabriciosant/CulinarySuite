@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_29_152150) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_04_114114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -110,7 +110,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_29_152150) do
   end
 
   create_table "g_enderecos", force: :cascade do |t|
-    t.integer "cep"
+    t.string "cep"
     t.string "logradouro"
     t.integer "numero"
     t.string "bairro"
@@ -118,6 +118,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_29_152150) do
     t.bigint "g_estado_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "g_cidade_id"
+    t.integer "cidade_id"
     t.index ["g_estado_id"], name: "index_g_enderecos_on_g_estado_id"
   end
 

@@ -1,6 +1,17 @@
 class GEstadosController < ApplicationController
   before_action :set_g_estado, only: %i[ show edit update destroy ]
 
+  def cidades
+    estado = GEstado.find(params[:id])
+    cidades = estado.g_cidades.select(:id, :nome) # Corrigir se a associação for diferente
+    render json: cidades
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Estado não encontrado" }, status: :not_found
+  rescue => e
+    Rails.logger.error("Erro ao carregar cidades: #{e.message}")
+    render json: { error: "Erro interno ao carregar cidades" }, status: :internal_server_error
+  end
+
   # GET /g_estados or /g_estados.json
   def index
     @g_estados = GEstado.all
@@ -53,12 +64,11 @@ class GEstadosController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_g_estado
-      @g_estado = GEstado.find(params.expect(:id))
+      @g_estado = GEstado.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def g_estado_params
-      params.expect(g_estado: [ :nome, :g_cidade_id ])
       params.require(:g_estado).permit(:nome)
     end
 end

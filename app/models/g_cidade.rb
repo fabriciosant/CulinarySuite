@@ -1,5 +1,6 @@
 class GCidade < ApplicationRecord
   belongs_to :g_estado
+  has_many :g_enderecos
 
   #validações
   validates :nome, presence: { message: "não pode ficar em branco" }

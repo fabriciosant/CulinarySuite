@@ -9,6 +9,9 @@ default: &default
 development:
   <<: *default
   database: culinary_suite_development
+  username: Fabricio
+  password: F@bricio20
+  host: localhost
 
 test:
   <<: *default
