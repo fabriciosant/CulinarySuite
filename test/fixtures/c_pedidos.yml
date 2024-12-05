@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_pedido: 2024-12-05 08:02:07
+  entrega: false
+  c_usuarios: one
+  c_produtos: one
+  c_pagamentos: one
+
+two:
+  data_pedido: 2024-12-05 08:02:07
+  entrega: false
+  c_usuarios: two
+  c_produtos: two
+  c_pagamentos: two

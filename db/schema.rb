@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_04_114114) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_05_155219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -56,6 +56,21 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_04_114114) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["c_tipo_pagamento_id"], name: "index_c_pagmentos_on_c_tipo_pagamento_id"
+  end
+
+  create_table "c_pedidos", force: :cascade do |t|
+    t.datetime "data_pedido"
+    t.boolean "entrega"
+    t.bigint "c_usuarios_id", null: false
+    t.bigint "c_produtos_id", null: false
+    t.bigint "c_pagamentos_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["c_pagamentos_id"], name: "index_c_pedidos_on_c_pagamentos_id"
+    t.index ["c_produtos_id"], name: "index_c_pedidos_on_c_produtos_id"
+    t.index ["c_usuarios_id"], name: "index_c_pedidos_on_c_usuarios_id"
+    t.index ["user_id"], name: "index_c_pedidos_on_user_id"
   end
 
   create_table "c_produtos", force: :cascade do |t|
@@ -129,10 +144,36 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_04_114114) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "c_pagamentos", "c_tipos_pagamentos"
   add_foreign_key "c_pagmentos", "c_tipos_pagamentos"
+  add_foreign_key "c_pedidos", "c_pagamentos", column: "c_pagamentos_id"
+  add_foreign_key "c_pedidos", "c_produtos", column: "c_produtos_id"
+  add_foreign_key "c_pedidos", "c_usuarios", column: "c_usuarios_id"
+  add_foreign_key "c_pedidos", "users"
   add_foreign_key "c_produtos_promocoes", "c_produtos"
   add_foreign_key "c_usuarios", "g_enderecos"
   add_foreign_key "g_cidades", "g_estados"

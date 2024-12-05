@@ -73,3 +73,9 @@ gem "ransack"
 gem "simple_form"
 
 gem "byebug"
+
+gem "omniauth"
+
+# gem "omniauth-rails"
+
+gem "omniauth-google-oauth2"

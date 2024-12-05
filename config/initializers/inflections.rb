@@ -8,5 +8,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular "g_estado", "g_estados"
   inflect.irregular "g_endereco", "g_enderecos"
   inflect.irregular "c_usuario", "c_usuarios"
+  inflect.irregular "c_pedido", "c_pedidos"
    inflect.acronym "RESTful"
 end

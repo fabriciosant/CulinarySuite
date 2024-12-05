@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :c_pedidos
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniautsh_callbacks"
+  }
   resources :c_usuarios
   resources :g_enderecos
   resources :g_estados do
