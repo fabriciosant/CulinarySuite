@@ -10,4 +10,7 @@ class User < ApplicationRecord
          :confirmable,
          :lockable,
          :omniauthable
+
+
+  belongs_to :g_endereco, optional: true
 end

@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   resources :c_pedidos
   devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniautsh_callbacks"
-  }
-  resources :c_usuarios
-  resources :g_enderecos
+  omniauth_callbacks: "users/omniautsh_callbacks"
+}
   resources :g_estados do
     member do
       get :cidades
     end
   end
+  resources :g_enderecos
   resources :g_cidades
   resources :c_produtos_promocoes
   resources :c_produtos
