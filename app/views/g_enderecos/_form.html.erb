@@ -3,7 +3,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :cep, input_html: { id: "cep", maxlength: 9, placeholder: "Digite o CEP" } %>
+    <%= f.input :cep, input_html: { id: "cep", maxlength: 9, placeholder: "Digite o CEP",onkeyup:"handleZipCode(event)" } %>
     <%= f.input :logradouro, input_html: { placeholder: "Digite o logradouro" } %>
     <%= f.input :numero, input_html: { placeholder: "Digite o número" } %>
     <%= f.input :bairro, input_html: { placeholder: "Digite o bairro" } %>
@@ -18,3 +18,16 @@
     <%= f.button :submit, class: "botao-criar" %>
   </div>
 <% end %>
+<script>
+  const handleZipCode = (event) => {
+    let input = event.target
+    input.value = zipCodeMask(input.value)
+  }
+
+  const zipCodeMask = (value) => {
+    if (!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{5})(\d)/,'$1-$2')
+    return value
+  }
+</script>

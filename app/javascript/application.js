@@ -16,14 +16,6 @@ window.confirmDelete = function (itemName, deleteUrl) {
   };
 //#endregion
 
-document.addEventListener("DOMContentLoaded", function () {
-  const cepInput = document.getElementById("cep");
-  cepInput.addEventListener("input", function () {
-    // Remove qualquer caractere não numérico
-    cepInput.value = cepInput.value.replace(/\D/g, '');
-  });
-});
-
 //#region show input cidades
 document.addEventListener("turbo:load", () => {
   const estadoSelect = document.getElementById("estado");
