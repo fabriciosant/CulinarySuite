@@ -4,9 +4,9 @@
 
   <div class="form-inputs">
     <%= f.input :cep, input_html: { id: "cep", maxlength: 9, placeholder: "Digite o CEP",onkeyup:"handleZipCode(event)" } %>
-    <%= f.input :logradouro, input_html: { placeholder: "Digite o logradouro" } %>
+    <%= f.input :logradouro, input_html: { id:"logradouro", placeholder: "Digite o logradouro" } %>
     <%= f.input :numero, input_html: { placeholder: "Digite o número" } %>
-    <%= f.input :bairro, input_html: { placeholder: "Digite o bairro" } %>
+    <%= f.input :bairro, input_html: { id:"bairro", placeholder: "Digite o bairro" } %>
     <%= f.input :complemento, input_html: { placeholder: "Digite o complemento (Opcional)..." } %>
     <%= f.association :g_estado, input_html: { id: "estado" }, prompt: "Selecione o Estado" %>
     <div id="cidade-container" style="display: none;">
@@ -18,6 +18,8 @@
     <%= f.button :submit, class: "botao-criar" %>
   </div>
 <% end %>
+
+
 <script>
   const handleZipCode = (event) => {
     let input = event.target
@@ -30,4 +32,21 @@
     value = value.replace(/(\d{5})(\d)/,'$1-$2')
     return value
   }
+
+  const cep = document.querySelector('#cep')
+  const logradouro = document.querySelector('#logradouro')
+  const bairro = document.querySelector('#bairro')
+
+  cep.addEventListener('focusout', async () => {
+    const response = await fetch(`https://viacep.com.br/ws/${cep.value}/json/`)
+
+    if(!response.ok){
+      throw await response.json()
+    }
+
+    const responseCep = await response.json()
+
+    logradouro.value = responseCep.logradouro
+    bairro.value = responseCep.bairro
+  })
 </script>
