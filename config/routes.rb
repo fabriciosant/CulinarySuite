@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :painel_adms
   resources :c_pedidos
   devise_for :users, controllers: {
   omniauth_callbacks: "users/omniautsh_callbacks"
@@ -26,5 +27,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "g_enderecos#index"
+  root "painel_adms#index"
 end

@@ -1,0 +1,2 @@
+class PainelAdm < ApplicationRecord
+end

@@ -3,7 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
 
-
 //#region Confirmar deleção
 window.confirmDelete = function (itemName, deleteUrl) {
     document.getElementById('modalMessage').textContent = `Você realmente deseja deletar "${itemName}"?`;
@@ -54,5 +53,38 @@ document.addEventListener("turbo:load", () => {
       }
     });
   }
+});
+//#endregion
+
+//#region sidebar
+document.addEventListener('DOMContentLoaded', () => {
+  // Seleciona elementos do menu e botão expandir
+  var menuItem = document.querySelectorAll('.item-menu');
+  var btnExp = document.querySelector('#btn-exp');
+  var menuSide = document.querySelector('.menu-lateral');
+
+  // Função para selecionar o item do menu
+  function selectLink(event) {
+    event.stopPropagation(); // Evita que o clique afete outros elementos
+    menuItem.forEach((item) => item.classList.remove('ativo')); // Remove a classe ativo
+    this.classList.add('ativo'); // Adiciona a classe ativo no item clicado
+  }
+
+  // Adiciona o evento de clique a cada item do menu
+  menuItem.forEach((item) => item.addEventListener('click', selectLink));
+
+  // Função para expandir/recolher o menu e alterar o ícone
+  window.changeIcon = function (icon) {
+    menuSide.classList.toggle('expandir');
+
+    // Alterna o ícone entre "list" e "x"
+    if (menuSide.classList.contains('expandir')) {
+      icon.classList.remove('bi-list');
+      icon.classList.add('bi-x');
+    } else {
+      icon.classList.remove('bi-x');
+      icon.classList.add('bi-list');
+    }
+  };
 });
 //#endregion

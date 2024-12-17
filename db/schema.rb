@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_05_155219) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_13_145829) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -107,7 +107,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_05_155219) do
   end
 
   create_table "c_usuarios", force: :cascade do |t|
-    t.integer "cpf"
+    t.string "cpf"
     t.string "nome"
     t.integer "telefone"
     t.bigint "g_endereco_id", null: false
@@ -140,6 +140,11 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_05_155219) do
 
   create_table "g_estados", force: :cascade do |t|
     t.string "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "painel_adms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

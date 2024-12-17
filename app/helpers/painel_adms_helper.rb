@@ -1,0 +1,2 @@
+module PainelAdmsHelper
+end

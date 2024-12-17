@@ -33,12 +33,12 @@
 
 <body>
     <%= render "layouts/navbar"%>
-    <div class="album py-5 bg-body-tertiary">
+    <%= render "layouts/sidebar"%>
+    <main>
         <div class="container">
             <%= yield %>
             <%= render "layouts/delete_modal"%>
         </div>
-    </div>
+    </main>
 </body>
-
 </html>
