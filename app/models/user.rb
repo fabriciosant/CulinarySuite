@@ -8,9 +8,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :confirmable,
-         :lockable,
-         :omniauthable
-
+         :lockable
 
   belongs_to :g_endereco, optional: true
 end

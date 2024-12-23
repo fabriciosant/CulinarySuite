@@ -1,5 +1,6 @@
 class PainelAdmsController < ApplicationController
   before_action :set_painel_adm, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /painel_adms or /painel_adms.json
   def index
@@ -60,7 +61,7 @@ class PainelAdmsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_painel_adm
-      @painel_adm = PainelAdm.find(params.expect(:id))
+      @painel_adm = PainelAdm.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

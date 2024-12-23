@@ -75,10 +75,4 @@ gem "simple_form"
 
 gem "byebug"
 
-gem "omniauth"
-
-# gem "omniauth-rails"
-
-gem "omniauth-google-oauth2"
-
 gem "kaminari", "~> 1.2"
