@@ -1,6 +1,6 @@
 class GEnderecosController < ApplicationController
   before_action :set_g_endereco, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, only: %i[ index show edit update destroy]
   # GET /g_enderecos or /g_enderecos.json
   def index
     @g_enderecos = GEndereco.all

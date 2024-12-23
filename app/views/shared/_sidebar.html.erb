@@ -8,18 +8,20 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-      <a class="nav-link" href="#">
+      <%= link_to painel_adms_path, class: "nav-link" do %>
         <i class="bi bi-columns-gap"></i>
         <span>Dashboard</span>
-      </a>
+      <% end %>
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">Interface</div>
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="bi bi-gear"></i>
-        <span>Components</span>
-      </a>
+      <li class="nav-item">
+        <%= link_to g_enderecos_path, class: "nav-link collapsed", data: { toggle: "collapse" }, aria: { expanded: "true", controls: "collapseTwo" } do %>
+          <i class="bi bi-gear-fill"></i>
+          <span>Endereços</span>
+        <% end %>
+      </li>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Custom Components:</h6>
@@ -47,7 +49,7 @@
     <div class="sidebar-heading">Addons</div>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
+        <i class="bi bi-folder-fill"></i>
         <span>Pages</span>
       </a>
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -64,13 +66,13 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">
-        <i class="fas fa-fw fa-chart-area"></i>
+        <i class="bi bi-bar-chart-line-fill"></i>
         <span>Charts</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">
-        <i class="fas fa-fw fa-table"></i>
+        <i class="bi bi-table"></i>
         <span>Tables</span>
       </a>
     </li>
