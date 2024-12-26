@@ -27,6 +27,8 @@ Devise.setup do |config|
 
   config.unlock_in = 1.hour
 
+  config.timeout_in = 30.minutes
+
   config.lock_strategy = :failed_attempts
 
   config.unlock_strategy = :both
