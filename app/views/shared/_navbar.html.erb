@@ -124,8 +124,11 @@
         <li class="nav-item dropdown no-arrow mt-3">
             <% if user_signed_in? %>
                 <p class="mb-0">
-                Olá, <%= current_user.email %>!
-                <%= button_to "Sair", destroy_user_session_path, method: :delete, class:"btn btn-link btn-sm text-danger" %>
+                Olá, <%= current_user.nome %>!
+                <p class="mb-0">
+                    <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-link btn-sm text-danger" do %>
+                        <i class="bi bi-box-arrow-right"></i> <!-- Ícone de logout -->
+                    <% end %>
                 </p>
             <% else %>
                 <p class="mb-0">

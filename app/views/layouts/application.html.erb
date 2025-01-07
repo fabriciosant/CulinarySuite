@@ -28,22 +28,24 @@
 </head>
 
 <body>
-    <nav>
-        <%= render "shared/navbar"%>                       
-    </nav>
+    <% if !devise_controller? %>  <!-- Condição para não mostrar navbar e sidebar nas páginas de login/registro -->
+        <nav>
+            <%= render "shared/navbar" %>                       
+        </nav>
+        <div id="sidebar">
+            <%= render "shared/sidebar" %>
+        </div>
+    <% end %>
+
     <main>
         <div class="container mt-5">
             <%= yield %>
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
         </div>
     </main>
-    <div id="sidebar">
-        <%= render "shared/sidebar"%>
-    </div>
-    <footer class="text-center">
-        <% render "shared/footer" %>
+
+    <footer class="text-center fixed-bottom">
+        <%= render "shared/footer" %>
     </footer>
-    <%= render "shared/delete_modal"%>
+    <%= render "shared/delete_modal" %>
 </body>
 </html>

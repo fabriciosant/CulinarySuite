@@ -9,9 +9,21 @@ class Users::SessionsController < Devise::SessionsController
 # end
 
 # POST /resource/sign_in
-# def create
-#   super
-# end
+def create
+  user_params = params.require(:user).permit(:email, :password, :remember_me)
+
+  if user_params[:email].blank?
+    flash[:alert] = I18n.t("devise.failure.blank_email")
+    redirect_to new_user_session_path(user: user_params)
+  elsif user_params[:password].blank?
+    flash[:alert] = I18n.t("devise.failure.blank_password")
+    redirect_to new_user_session_path(user: user_params)
+  else
+    super
+  end
+end
+
+
 
 # # DELETE /resource/sign_out
 def destroy
