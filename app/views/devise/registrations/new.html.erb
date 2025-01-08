@@ -1,34 +1,92 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-
-    <%= f.input :nome,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "nome" }, class:"form-control form-control-user" %>
-    <%= f.input :sobrenome,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "sobrenome" }, class:"form-control form-control-user" %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+<script src="application"></script>
+<body class="bg-gradient-danger">
+  <div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-600 mb-4">Registrar uma conta!</h1>
+              </div>
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= f.error_notification %>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <%= f.input :nome,
+                                required: true,
+                                autofocus: true,
+                                label: false,
+                                input_html: { placeholder: "Nome", style:"border-radius: 50px; padding: 25px;" } %>
+                  </div>
+                  <div class="col-sm-6">
+                    <%= f.input :sobrenome,
+                                required: true,
+                                autofocus: true,
+                                label: false,
+                                input_html: { placeholder: "Sobrenome", style:"border-radius: 50px; padding: 25px;" } %>
+                  </div>
+                </div> 
+                <div class="form-group row">
+                  <%= f.input :email,
+                              required: true,
+                              autofocus: true,
+                              label: false,
+                              input_html: { placeholder: "E-mail", style:"border-radius: 50px; padding: 25px;" } %>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="input-group">
+                          <%= f.input :password,
+                                      required: false,
+                                      label: false,
+                                      wrapper_html: { class: "w-100" },
+                                      input_html: {
+                                        autocomplete: "current-password",
+                                        placeholder: "Senha",
+                                        style: "border-radius: 50px; padding: 25px; padding-right: 50px;",
+                                        class: "form-control input-senha"
+                                      } %>
+                          <div class="input-group-append">
+                            <button type="button" class="btn btn-white toggle-password-register" style="border-radius: 50px; position: absolute; right: 15px; top: 40%; transform: translateY(-50%);">
+                              <i class="bi bi-eye"></i>
+                            </button>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <%= f.input :password_confirmation,
+                                  required: false,
+                                  label: false,
+                                  wrapper_html: { class: "w-100" },
+                                  input_html: {
+                                    autocomplete: "current-password",
+                                    placeholder: "Confirmar Senha",
+                                    style: "border-radius: 50px; padding: 25px; padding-right: 50px;",
+                                    class: "form-control input-confirmar-senha"
+                                  } %>
+                      <div class="input-group-append">
+                        <button type="button" class="btn btn-white toggle-password-confirm" style="border-radius: 50px; position: absolute; right: 15px; top: 40%; transform: translateY(-50%);">
+                          <i class="bi bi-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <%= f.button :submit, "Cadastrar", class: "btn btn-danger w-100", style:"border-radius: 50px" %>
+                </div>
+              <% end %>
+              <div class="text-center mt-3">
+                <%= render "devise/shared/links" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</body>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

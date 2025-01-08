@@ -56,16 +56,16 @@ document.addEventListener("turbo:load", () => {
 });
 //#endregion
 
-
 //#region mostrar senha
-document.addEventListener("DOMContentLoaded", () => {
-  const togglePasswordButtons = document.querySelectorAll(".toggle-password");
+function showPasswordLogin(){
 
+  const togglePasswordButtons = document.querySelectorAll(".toggle-password");
+  
   togglePasswordButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const passwordInput = button.closest(".input-group").querySelector(".password-input");
       const icon = button.querySelector("i");
-
+      
       if (passwordInput.type === "password") {
         passwordInput.type = "text";
         icon.classList.remove("bi-eye");
@@ -77,5 +77,53 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-});
+}
+
+function showPasswordRegister(){
+  const exibirSenha = document.querySelectorAll(".toggle-password-register");
+  const exibirConfirmarSenha = document.querySelectorAll(".toggle-password-confirm");
+
+  exibirSenha.forEach((button) => {
+    button.addEventListener("click", () => {
+      const senha = button.closest(".input-group").querySelector(".input-senha");
+      const icone = button.querySelector("i");
+      
+      if(senha.type === "password") {
+        senha.type = "text";
+        icone.classList.remove("bi-eye");
+        icone.classList.add("bi-eye-slash");
+      }else{
+        senha.type = "password";
+        icone.classList.remove("bi-eye-slash");
+        icone.classList.add("bi-eye");
+      }
+    })
+  })
+  exibirConfirmarSenha.forEach((button) => {
+    button.addEventListener("click", () => {
+      const confirmarSenha = button.closest(".input-group").querySelector(".input-confirmar-senha");
+      const icon = button.querySelector("i");
+
+      if(confirmarSenha.type === "password"){
+        confirmarSenha.type = "text";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+      }else{
+        confirmarSenha.type = "password";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye")
+      }
+    })
+  })
+
+}
+
+function initializePasswordToggle(){
+  showPasswordLogin();
+  showPasswordRegister();
+}
+
+document.addEventListener("turbo:load", initializePasswordToggle);
+document.addEventListener("DOMContentLoaded", initializePasswordToggle);
+
 //#endregion
