@@ -58,3 +58,28 @@ main{
 footer{
     grid-area: footer;
 }
+
+/********************************************************/
+
+#accordionSidebar {
+    transition: all 0.3s ease;
+    &.toggled {
+      width: 80px; 
+    }
+  }
+  
+  .sidebar .nav-link {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .sidebar .nav-link span {
+    font-size: 0.75rem; 
+    margin-top: 4px; 
+  }
+  
+  #accordionSidebar.toggled .nav-link span {
+    display: block; 
+}
+  

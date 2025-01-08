@@ -10418,18 +10418,18 @@ a:focus {
   cursor: pointer;
 }
 
-.sidebar #sidebarToggle::after {
+.sidebar::after {
   font-weight: 900;
   content: '\f104';
   font-family: 'Font Awesome 5 Free';
   margin-right: 0.1rem;
 }
 
-.sidebar #sidebarToggle:hover {
+.sidebar:hover {
   text-decoration: none;
 }
 
-.sidebar #sidebarToggle:focus {
+.sidebar:focus {
   outline: none;
 }
 
@@ -10438,7 +10438,7 @@ a:focus {
   overflow: hidden;
 }
 
-.sidebar.toggled #sidebarToggle::after {
+.sidebar.toggled::after {
   content: '\f105';
   font-family: 'Font Awesome 5 Free';
   margin-left: 0.25rem;
@@ -10665,15 +10665,15 @@ a:focus {
   color: #6e707e;
 }
 
-.sidebar-light #sidebarToggle {
+.sidebar-light {
   background-color: #eaecf4;
 }
 
-.sidebar-light #sidebarToggle::after {
+.sidebar-light::after {
   color: #b7b9cc;
 }
 
-.sidebar-light #sidebarToggle:hover {
+.sidebar-light:hover {
   background-color: #dddfeb;
 }
 
@@ -10721,15 +10721,15 @@ a:focus {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.sidebar-dark #sidebarToggle::after {
+.sidebar-dark::after {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.sidebar-dark #sidebarToggle:hover {
+.sidebar-dark:hover {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-.sidebar-dark.toggled #sidebarToggle::after {
+.sidebar-dark.toggled::after {
   color: rgba(255, 255, 255, 0.5);
 }
 

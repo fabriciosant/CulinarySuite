@@ -127,3 +127,28 @@ document.addEventListener("turbo:load", initializePasswordToggle);
 document.addEventListener("DOMContentLoaded", initializePasswordToggle);
 
 //#endregion
+
+//#region toggle sidebar
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.getElementById("accordionSidebar");
+  const toggleButton = document.getElementById("sidebarToggle");
+  const toggleIcon = toggleButton.querySelector("i");
+
+  if (toggleButton && sidebar) {
+    toggleButton.addEventListener("click", () => {
+      // Adiciona ou remove a classe 'toggled'
+      sidebar.classList.toggle("toggled");
+
+      // Alterna o ícone do botão
+      if (sidebar.classList.contains("toggled")) {
+        toggleIcon.classList.remove("bi-caret-left-fill");
+        toggleIcon.classList.add("bi-caret-right-fill");
+      } else {
+        toggleIcon.classList.remove("bi-caret-right-fill");
+        toggleIcon.classList.add("bi-caret-left-fill");
+      }
+    });
+  }
+});
+
+//#endregion
