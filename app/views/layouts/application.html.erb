@@ -21,6 +21,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js">    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js">      </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">                                        </script>
+
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -35,17 +37,17 @@
         <div id="sidebar">
             <%= render "shared/sidebar" %>
         </div>
+        <footer class="text-center">
+            <%= render "shared/footer" %>
+        </footer>
     <% end %>
 
     <main>
-        <div class="container mt-5">
+        <div class="container-fluid mt-3">
             <%= yield %>
         </div>
     </main>
 
-    <footer class="text-center fixed-bottom">
-        <%= render "shared/footer" %>
-    </footer>
     <%= render "shared/delete_modal" %>
 </body>
 </html>
